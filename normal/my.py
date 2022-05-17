@@ -1,10 +1,4 @@
-from selenium import webdriver
-
-driver = webdriver.Chrome('./chromedriver')
-driver.get('https://scolkg.com/')
-driver.implicitly_wait(time_to_wait=5)
-element = driver.find_element_by_xpath('//*[@id="app_coinboard"]/div[2]/table/tbody/tr[8]/td[6]').text
-driver.quit()# import urllib.parse import quote_plus
+# import urllib.parse import quote_plus
 
 import urllib.parse
 from bs4 import BeautifulSoup
@@ -32,10 +26,11 @@ for i in r :
     print(i.select_one('.LC20lb.MBeuO.DKV0Md').text) #제목 #select one을 사용하면 텍스트를 가져올 수 있다. #클래스에 빈칸은 점으로 바꿔준다.
     print(i.a.attrs['href']) #링크 #a 태그 안에, href 를 속성을 갖는 링크 불루직
     print()
+print('good1')
 # if (driver.close() == 1):
 #     print('good2')
-
-driver.find_element_by_css_selector('#main_pack > div.paging > a.next').click()
-
 #크롬 드라이버 닫아주기
-#driver.close()
+
+driver.close()
+
+
