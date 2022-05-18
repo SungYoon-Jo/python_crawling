@@ -26,11 +26,10 @@ for i in r :
     print(i.select_one('.LC20lb.MBeuO.DKV0Md').text) #제목 #select one을 사용하면 텍스트를 가져올 수 있다. #클래스에 빈칸은 점으로 바꿔준다.
     print(i.a.attrs['href']) #링크 #a 태그 안에, href 를 속성을 갖는 링크 불루직
     print()
-print('good1')
 # if (driver.close() == 1):
 #     print('good2')
 #크롬 드라이버 닫아주기
 
 driver.close()
-
+print('good')
 
