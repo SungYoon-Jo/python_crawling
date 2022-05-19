@@ -1,25 +1,34 @@
+import csv
+import ssl
+import tempfile
+from urllib.request import urlopen
+from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
-from selenium import webdriver
-import time
 
-query_keyword = input("크롤링 키워드는?")
+context = ssl._create_unverified_context()
 
-driver = webdriver.Chrome()
-driver.get("https://korean.visitkorea.or.kr/main/main.do")
-time.sleep(4)
+search = input("검색어를 입력하세요 : ")
+url = 'https://m.search.naver.com/search.naver?where=m_view&sm=mtb_jum&query=%'
+newUrl = url + quote_plus(search)
 
-driver.find_element_by_id('chkForm01').click()
+html = urlopen(newUrl, context=context).read()
+soup = BeautifulSoup(html,'html.parser')
 
-driver.find_element_by_id("btn_search").click()
+total = soup.select('.api_txt_lines.total_tit')
+searchList = []
 
-element = driver.find_element_by_id("inp_search")
-element.send_keys(query_keyword)
+for i in total :
+    temp = []
+    temp.append(i.text)
+    temp.append(i.attrs['href'])
+    searchList.append(temp)
 
-driver.find_element_by_link_text("검색").click()
+f = open(f'{search}.csv','w',encoding='utf-8',newline='')
+csvWriter = csv.writer(f)
 
+for i in searchList:
+    csvWriter.writerow(i)
+    csv
 
-full_html = driver.page_source
-
-soup = BeautifulSoup( full_html, 'html.parser' )
-
-time.sleep(2)
+f.close()
+print("완료 !")
