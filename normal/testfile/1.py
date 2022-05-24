@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 url = 'https://finance.naver.com/sise/sise_market_sum.naver?&page='
 
-filename = 'test.csv'
+filename = 'test1.csv'
 f = open(filename, 'w', encoding='utf-8-sig', newline='')
 writer = csv.writer(f)
 
@@ -20,16 +20,18 @@ titles = [title_row.get_text() for title_row in title_rows]
 writer.writerow(titles)
 
 # rows 가져오기
-for page in range(1, 5):
+for page in range(1, 2):
 	res = requests.get(url + str(page))
 	res.raise_for_status()
 
 	soup = BeautifulSoup(res.text, 'lxml')
 	data_rows = soup.find('table', attrs={'class':'type_2'}).find('tbody').find_all('tr')
+	# print(data_rows)
 	for row in data_rows:
-		columns = row.find_all('td')
-		if len(columns) <= 1: # 의미 없는 데이터는 skip
-			continue
-		data = [column.get_text().strip() for column in columns[:-1]]
-		# print(data)
-		writer.writerow(data)
+		# columns = row.find_all('td')
+		# # print(columns)
+		# if len(columns) <= 1: # 의미 없는 데이터는 skip
+		# 	continue
+		# data = [column.get_text().strip() for column in columns[:]]
+		# # print(data)
+		writer.writerow(data_rows)
