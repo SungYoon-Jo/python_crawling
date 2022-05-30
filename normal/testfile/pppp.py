@@ -1,7 +1,7 @@
 import csv
 from bs4 import BeautifulSoup
 from selenium import webdriver
-
+import time
 
 url = 'https://www.google.com/search?q=apple'
 # url = 'https://www.google.com/search?q=apple&sxsrf=ALiCzsY7E8BvpQSsNObhfh7C2MxlBF6c4Q:1653633076269&ei=NHCQYqqJELear7wPjuuI0A4&start=10&sa=N&ved=2ahUKEwiq8-Wgh__3AhU3zYsBHY41AuoQ8tMDegQIAxA-&biw=932&bih=714&dpr=1.25'
@@ -33,27 +33,48 @@ r = soup.select('.tF2Cxc')  #원하는 class / name을 F12에서 찾기 # select
 # 안되는거 : 다음 페이지 항목을 못받아옴
 # 해결 방안 : 항목을 업데이트 해줌
 
-num = 5
+num = 2
 
-for i in range(num):
-    # driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]' %i).click()
-    driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]/a' %i).click()
+for page in range(num,4):
+
+    # print(page)
+    # print(page+1)
+    # driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]' %page).click()
+    # driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]/a' %i).click()
+    # driver.find_element_by_xpath('//*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[3]/a' %page, page+1).click()
+    if (page == 2):
+        driver.find_element_by_xpath('//*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[3]').click()
+        print('good')
+        time.sleep(4)
+    else:
+        driver.find_element_by_xpath('//*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[%s+1]'% page).click()
+        print('day')
     # print(i)
     # print("r: " + len(r))
     # print("num:" + num)
 
-
-
-
     # //*[@id="xjs"]/table/tbody/tr/td[2]/a
     # /html/body/div[7]/div/div[10]/div/div[6]/span[1]/table/tbody/tr/td[2]/a
+    # //*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[4]
+    # //*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[3]/a
+    # //*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[5]
+    # //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[4]/a
+
+# //*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[3]/a
 
 
 
+ ### //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[3]/a 
+ ## //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[4]/a
+
+ ### //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[4]/a
+ ## //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[5]/a
+ # //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[2]/a
+# //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[3]
 
 
 
-
+# //*[@id="botstuff"]/div/div[3]/table/tbody/tr/td[5]/a
 
 
 #크롬 드라이버 닫아주기

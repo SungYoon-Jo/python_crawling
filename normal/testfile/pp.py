@@ -59,15 +59,15 @@ num_page = 5
 # f.close()
 
 # for page in range(page,num_page):
-for page in range(1,2):
+for page in range(3,4):
 #     time.sleep(3)
 #     print(int(page))
 #     print(int(num_page))
     # for i in range(page) :
-    for i in r:
+    # for i in r:
 
-        data = (i.select_one('.LC20lb.MBeuO.DKV0Md').text,i.a.attrs['href'])
-        print(len(data))
+    #     data = (i.select_one('.LC20lb.MBeuO.DKV0Md').text,i.a.attrs['href'])
+    #     print(len(data))
         # writer.writerow(data)
 
         # print("data")
@@ -89,13 +89,13 @@ for page in range(1,2):
         # writer.writerow(i.a.attrs['href'])
     
     # 다음 페이지 클릭
-    # driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]' %page).click()
+    driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]' %page).click()
     # driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]/a' %page).click()
-    print(page + "page")
+    # print(page + "page")
 
 
 #크롬 드라이버 닫아주기
-driver.close()
+# driver.close()
 
 # 실행 확인
 print("\ngood sccess")
