@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 
+
 # 0번째 1번
 url = 'https://www.google.com/search?q=apple'
 # 1번째 2번
@@ -18,11 +19,24 @@ r = soup.select('.tF2Cxc')  #원하는 class / name을 F12에서 찾기 # select
 
 p = soup.select(".fl")
 
-# node
-# 3 = 1 | 4 = 2 | 5 = 3 ...
-for page in range(3,7):
-    driver.find_element_by_xpath('//*[@id="xjs"]/table/tbody/tr/td[%s]' %page).click()
-    time.sleep(5)
+# driver.find_elements_by_css_selector(".fl")[1].click()
+# print(len(p))
+for i in range(1,5):
+    time.sleep(4)
+    # print(driver.find_elements_by_css_selector('.fl')[i])
+    print('gugu')
+    driver.find_elements_by_css_selector(".SJajHc.NVbCr")[1].click()
+    print(i)
+# print(driver.find_element(BY.CSS_SELECTOR,'.fl'))
+# 1 2 3 4
+# 1 4 3 6
+
+# 1 2 3 4
+# 2 3 2 6
+
+# 1 2 3 4
+# 2 3 2 3
+
 
 # filename = 'test.csv'
 # f = open(filename, 'w', encoding='utf-8-sig', newline='')
