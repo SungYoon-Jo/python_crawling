@@ -5,7 +5,7 @@ import time
 import urllib.parse
 
 # selenium 안에 webdriver를 사용하기 위해서 웹 사이트를 띄운다
-driver = webdriver.Chrome()
+
 
 # csv파일로 저장 할수 있도록 한다. 이름, 파일 데이터 형태, 저장 순으로 초기화 해준다.
 filename = 'google.csv'
@@ -15,7 +15,7 @@ writer = csv.writer(f)
 con = 0
 num = 30
 
-# con = 0 부터 num 30까지 10씩 증가하며 반복
+# con = 0 부터 num 30까지 10씩 증가하며 반복 0 = 1p 10 = 2p 20 = 3p ...
 for pg in range(con,num,10):
     time.sleep(4)
     print(pg)
@@ -23,10 +23,11 @@ for pg in range(con,num,10):
     if (pg == 0):
         pluseurl = input('검색어를 터미널에서 입력하세요 : ')
         url = 'https://www.google.com/search?q=%s' %(pluseurl)
+        driver = webdriver.Chrome()
 
     ch = "&start=%d" % (pg)
     churl = url + ch
-
+    
     driver.get(churl)
     html = driver.page_source
     soup = BeautifulSoup(html,'html.parser')
@@ -43,10 +44,8 @@ driver.close()
 # 그냥 실행 확인
 print("\ngood sccess")
 
-
-# 추가 기능 동적 url, next page, click url and inside url 캡처
-
-
+# 추가 해야 할 기능 
+# click url and inside url 캡처
 
 # 참고 자료
 
