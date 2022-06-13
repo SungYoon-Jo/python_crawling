@@ -28,7 +28,6 @@ csvWriter = csv.writer(f)
 
 for i in searchList:
     csvWriter.writerow(i)
-    csv
 
 f.close()
 print("완료 !")

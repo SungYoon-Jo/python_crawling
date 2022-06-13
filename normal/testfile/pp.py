@@ -60,14 +60,23 @@ num_page = 5
 
 # for page in range(page,num_page):
 for page in range(3,4):
+<<<<<<< HEAD
+    print(page)
+=======
+>>>>>>> c78d4edcfbb12d64451fb656c864be0a90aec917
 #     time.sleep(3)
 #     print(int(page))
 #     print(int(num_page))
     # for i in range(page) :
     # for i in r:
 
+<<<<<<< HEAD
+        # data = (i.select_one('.LC20lb.MBeuO.DKV0Md').text,i.a.attrs['href'])
+        # print(len(data))
+=======
     #     data = (i.select_one('.LC20lb.MBeuO.DKV0Md').text,i.a.attrs['href'])
     #     print(len(data))
+>>>>>>> c78d4edcfbb12d64451fb656c864be0a90aec917
         # writer.writerow(data)
 
         # print("data")
