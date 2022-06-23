@@ -40,6 +40,9 @@ for pg in range(con,num,10):
     soup = BeautifulSoup(html,'html.parser')
     r = soup.select('.tF2Cxc') 
 
+
+    # temp.append("href","text")
+    # temp = "href"
     for i in r:
         temp = []
         # print(i)
@@ -50,7 +53,7 @@ for pg in range(con,num,10):
         # print(temp)
         # print(temp[0:10])
         # print(len(temp))
-        # writer.writerow(temp)
+        writer.writerow(temp)
         # webbrowser.open(temp)
         # 0번째 웹 url 열기, 문제: 한개만 여는것이 아니라 한번에temp[1]의 내용을 열어버림, 해결책: 하나씩 열어서 하나씩 닫아야함 또한 url을 하나씩 할당 해줘야함
         # 한개를 누르고 사진을 받아오고 닫고 다음거 누르고 받고 닫고
