@@ -1,6 +1,7 @@
 import csv
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 import urllib.parse
 
@@ -17,7 +18,6 @@ num = 30
 
 # con = 0 부터 num 30까지 10씩 증가하며 반복 0 = 1p 10 = 2p 20 = 3p ...
 for pg in range(con,num,10):
-    time.sleep(4)
     print(pg)
     # url = "https://www.google.com/search?q=apple&ei=CKmVYveQMpqJoAS7xbuQAg&start=%d&sa=N&ved=2ahUKEwj3tIuUgon4AhWaBIgKHbviDiIQ8tMDegQIAxA9&biw=1036&bih=666&dpr=1.25"% pg
     if (pg == 0):
@@ -29,6 +29,8 @@ for pg in range(con,num,10):
     churl = url + ch
     
     driver.get(churl)
+    wait = WebDriverWait(driver,5)
+
     html = driver.page_source
     soup = BeautifulSoup(html,'html.parser')
     r = soup.select('.tF2Cxc') 
