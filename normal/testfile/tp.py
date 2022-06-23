@@ -1,25 +1,24 @@
-<<<<<<< HEAD
+import csv
+from bs4 import BeautifulSoup
 from selenium import webdriver
-
-driver_path = './chromedriver'
-
-driver = webdriver.Chrome(driver_path, options=options)
-variable = driver.current_url
-
-print(variable)
-=======
-# a, b = input('숫자 두 개를 입력하세요: ').split()
-
-# print(a,b)
-# print("asdasd%s \n asdasd%s"% (a,b))
-
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.alert import Alert
+import time
 import urllib.parse
+import webbrowser
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-for i in range(0,30,10):
-    if (i == 0):
-        pluseurl = input('검색어를 터미널에서 입력하세요 : ')
-        url = 'https://www.google.com/search?q=%s' %(pluseurl)
-    ch = "&start=%d" % (i)
-    churl = url + ch
-    print(churl)
->>>>>>> c78d4edcfbb12d64451fb656c864be0a90aec917
+
+url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
+driver = webdriver.Chrome('chromedriver.exe')
+driver.get(url)
+wait = WebDriverWait(driver,5)
+da = Alert(driver)
+da.text
+
+
+# 그냥 실행 확인
+print("\ngood sccess")
+

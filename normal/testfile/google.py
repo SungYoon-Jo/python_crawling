@@ -1,6 +1,8 @@
 import csv
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.alert import Alert
 import time
 import urllib.parse
 import webbrowser
@@ -38,17 +40,18 @@ for pg in range(con,num,10):
     soup = BeautifulSoup(html,'html.parser')
     r = soup.select('.tF2Cxc') 
 
-
     for i in r:
         temp = []
         # print(i)
         # temp[i].append(i.select_one('.LC20lb.MBeuO.DKV0Md').text)
-        # temp.append(i.a.attrs['href'])
-        temp = i.a.attrs['href']
+        temp.append(i.a.attrs['href'])
+
+        # temp = i.a.attrs['href']
+        # print(temp)
+        # print(temp[0:10])
         # print(len(temp))
-        print(temp[:])
-        # writer.writerow(temp[])
-        # webbrowser.open(temp) 
+        # writer.writerow(temp)
+        # webbrowser.open(temp)
         # 0번째 웹 url 열기, 문제: 한개만 여는것이 아니라 한번에temp[1]의 내용을 열어버림, 해결책: 하나씩 열어서 하나씩 닫아야함 또한 url을 하나씩 할당 해줘야함
         # 한개를 누르고 사진을 받아오고 닫고 다음거 누르고 받고 닫고
 
