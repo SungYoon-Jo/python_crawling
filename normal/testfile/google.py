@@ -41,6 +41,8 @@ for pg in range(con,num,10):
     r = soup.select('.tF2Cxc') 
 
 
+
+
     # temp.append("href","text")
     # temp = "href"
     for i in r:
