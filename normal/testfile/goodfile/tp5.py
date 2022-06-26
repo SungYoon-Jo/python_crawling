@@ -6,6 +6,9 @@ import pandas as pd
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import csv
+from bs4 import BeautifulSoup
+
 
 # bluetooth 오류 제거
 # options = webdriver.ChromeOptions()
@@ -13,12 +16,43 @@ chrome_options = Options()
 chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
+filename = 'google.csv'
+f = open(filename, 'w', encoding='utf-8-sig', newline='')
+writer = csv.writer(f)
+
 
 while 1:
-    q = input('목록을 선택해주세요 bye, login, put : ')
+    q = input('목록을 선택해주세요 bye, data, login, put : ')
 
     if q == "bye":
         break
+
+    elif q == "data":
+        con = int(input("0부터 입력해주세요 : "))
+        num = int(input("10단위로 입력해주세요 : "))
+
+        for pg in range(con,num,10):
+            if (pg == 0):
+                pluseurl = input('검색어를 터미널에서 입력하세요 : ')
+                url = 'https://www.google.com/search?q=%s' %(pluseurl)
+                # driver = webdriver.Chrome()
+
+            ch = "&start=%d" % (pg)
+            churl = url + ch
+            driver.get(churl)
+            driver.implicitly_wait(5)
+
+            html = driver.page_source
+            soup = BeautifulSoup(html,'html.parser')
+            r = soup.select('.tF2Cxc')
+
+            for i in r:
+                temp = []
+                temp.append(i.a.attrs['href'])
+                # temp.append(i.select_one('.LC20lb.MBeuO.DKV0Md').text)
+                writer.writerow(temp)
+
+        # driver.close()
 
     elif q == "login": #로그인 정보가 맞지 않았을때 텍스트를 불러오고 다시 입력 할 수 있도록 하는 기능 추가 하기.
         url = 'https://www.nuricops.org/index.do'
@@ -37,8 +71,6 @@ while 1:
 
         url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
         driver.get(url)
-
-
 
     elif q == "put":
 

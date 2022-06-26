@@ -1,18 +1,21 @@
+from attr import define
 import pandas as pd
 # import numpy as np
 
-file = "google.csv"
+file = "google1.csv"
 
 df = pd.read_csv(file, sep='\t', names=["href"])
 # print(df)
 
-# print(df.size)
+# print(df.size)        
 
-# for i in df.index:
-#     print(df.loc[i])
-
-for i in range(1):
+for i in df.index:
     print(df.loc[i])
+    print(i)
+print()
+print(len(df.index))
+# for i in range(1):
+#     print(df.loc[i])
 
 # csv 파일의 특정 행 출력 가능
 

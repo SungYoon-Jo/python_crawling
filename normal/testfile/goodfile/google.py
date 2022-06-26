@@ -19,6 +19,8 @@ f = open(filename, 'w', encoding='utf-8-sig', newline='')
 writer = csv.writer(f)
 
 con = 0
+
+# num = int(input("10단위로 입력해주세요 : "))
 num = 10
 
 # con = 0 부터 num 30까지 10씩 증가하며 반복 0 = 1p 10 = 2p 20 = 3p ...
@@ -26,7 +28,8 @@ for pg in range(con,num,10):
     print(pg)
     # url = "https://www.google.com/search?q=apple&ei=CKmVYveQMpqJoAS7xbuQAg&start=%d&sa=N&ved=2ahUKEwj3tIuUgon4AhWaBIgKHbviDiIQ8tMDegQIAxA9&biw=1036&bih=666&dpr=1.25"% pg #소스페이지
     if (pg == 0):
-        pluseurl = input('검색어를 터미널에서 입력하세요 : ')
+        # pluseurl = input('검색어를 터미널에서 입력하세요 : ')
+        pluseurl = "온라인바카라"
         url = 'https://www.google.com/search?q=%s' %(pluseurl)
         driver = webdriver.Chrome()    
 
@@ -38,8 +41,10 @@ for pg in range(con,num,10):
 
     html = driver.page_source
     soup = BeautifulSoup(html,'html.parser')
+    # r = soup.select('.tF2Cxc > .yuRUbf') 
     r = soup.select('.tF2Cxc') 
-
+    # TbwUpd, B6fmyf, tF2Cxc, NJjxre
+    # writer.writerow(r)
 
 
 
@@ -50,6 +55,10 @@ for pg in range(con,num,10):
         # print(i)
         # temp[i].append(i.select_one('.LC20lb.MBeuO.DKV0Md').text)
         temp.append(i.a.attrs['href'])
+        # temp.append(i.attrs['text'])
+        # temp.append(i.text)
+        # name = i.select_one('text')
+        # temp.append(temp)
 
         # temp = i.a.attrs['href']
         # print(temp)
