@@ -35,7 +35,6 @@ while 1:
             if (pg == 0):
                 pluseurl = input('검색어를 터미널에서 입력하세요 : ')
                 url = 'https://www.google.com/search?q=%s' %(pluseurl)
-                # driver = webdriver.Chrome()
 
             ch = "&start=%d" % (pg)
             churl = url + ch
@@ -50,7 +49,7 @@ while 1:
                 temp = []
                 temp.append(i.a.attrs['href'])
                 # temp.append(i.select_one('.LC20lb.MBeuO.DKV0Md').text)
-                writer.writerow(temp)
+                writer.writerow(temp)      
 
         # driver.close()
 
