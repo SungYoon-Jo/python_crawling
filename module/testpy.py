@@ -1,6 +1,6 @@
 
-
-a = "bag" in "a"
+b = "my"
+a = "my bag" in b
 
 print(a)
 
