@@ -1,20 +1,22 @@
+from itertools import chain
 import save
 import login
 import put
 
-while True:
+while 1:
 
-    choice = input('목록을 선택해주세요 bye, take, login, input : ')
+    ch = input('목록을 선택해주세요 bye, data, login, input : ')
 
-    if choice == "bye" or "BYE":
+    if ch == "bye":
+        print("goodday")
         break
 
-    elif choice == "take":
+    elif ch == "data":
         save.search()
 
-    elif choice == "login":
+    elif ch == "login":
         login.add()
 
-    elif choice == "input":
+    elif ch == "input":
         put.urldata()
     
