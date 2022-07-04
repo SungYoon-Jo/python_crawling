@@ -56,15 +56,14 @@ for pg in range(con,num,10):
         # print(a.rsplit(' '))
         # print(a.rstrip(' '))
         # print(a)
-        print(a)
-
         if ' ' in a:
-            continue
-        print(a)
+            t = a.split()
+            print(t[0])
+        else:
+            t = a.split()
+            print(t)
         print()
-
-
-        page.writerow(a)
+        page.writerow(t[0].split(','))
         # 하나씩 받아드려서 뒤에 문장 제거가 안됨
     # for ii in a:
     #     if ' ' in ii:
