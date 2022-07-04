@@ -1,3 +1,4 @@
+from pandas import array
 import format as fm
 import csvmodule as cm
 from bs4 import BeautifulSoup
@@ -12,6 +13,7 @@ def search():
         if (pg == 0):
             pluseurl = input('검색어를 터미널에서 입력하세요 : ')
             url = 'https://www.google.com/search?q=%s' %(pluseurl)
+            # inurl, intitle, intext 등 구글 검색을 사용 가능하지만 로봇 확인에 걸림
 
         ch = "&start=%d" % (pg)
         churl = url + ch
@@ -20,12 +22,20 @@ def search():
 
         html = fm.driver.page_source
         soup = BeautifulSoup(html,'html.parser')
-        r = soup.select('.tF2Cxc')
+        page = soup.select('.NJjxre')
 
-        for i in r:
-            temp = []
-            temp.append(i.a.attrs['href'])
-            # temp.append(i.select_one('.LC20lb.MBeuO.DKV0Md').text)
-            cm.writer.writerow(temp)
-
+        temp = []
+        arr = []
+        for i in page:
+            temp = i.select_one('.tjvcx').text
+            if ' ' in temp:
+                arr = temp.split()
+                print(arr[0])
+            else:
+                arr = temp.split()
+                print(arr)
+            print()
+            
+            cm.writer.writerow(arr[0].split(','))
+            
     cm.f.close()
