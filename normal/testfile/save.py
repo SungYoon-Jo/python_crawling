@@ -31,7 +31,7 @@ for pg in range(con,num,10):
     if (pg == 0):
         # pluseurl = input('검색어를 터미널에서 입력하세요 : ')
         pluseurl = "피망머니상"
-        url = 'https://www.google.com/search?q=intext:%s' %(pluseurl)
+        url = 'https://www.google.com/search?q=%s' %(pluseurl)
 
     ch = "&start=%d" % (pg)
     churl = url + ch
@@ -43,22 +43,118 @@ for pg in range(con,num,10):
     # r = soup.select('.tF2Cxc')
     # time.sleep(3)
     # rr = soup.select_one('.tjvcx')
-    rr = soup.select('.jtfYYd')
+    rr = soup.select('.NJjxre')
+    a = []
+    t = []
+    hs.writerow(rr)
+    for i in rr:
+        # a.append(i.select_one('.tjvcx').text)
+        a = i.select_one('.tjvcx').text
+        # print(a[0])
+        # a.find
+        # print(a.split(' '))
+        # print(a.rsplit(' '))
+        # print(a.rstrip(' '))
+        # print(a)
+        print(a)
+
+        if ' ' in a:
+            continue
+        print(a)
+        print()
+
+
+        page.writerow(a)
+        # 하나씩 받아드려서 뒤에 문장 제거가 안됨
+    # for ii in a:
+    #     if ' ' in ii:
+    #         if 'https' in ii:
+    #             print(ii)
+    #         t.append(ii)
+
+    # print(t[0])
+
+    # page.writerow(a)
+
+
+
+
+
+
+
+
+
+
+
+    # r = soup.find("https")
     # r = driver.find_element(By.CLASS_NAME, "srp")
     # print(r)
     # srp, tF2Cxc, NJjxre, jtfYYd, tjvcx
-    # writer.writerow(r) 
+    # page.writerow(soup) 
     # pn = rr[::2]
-    for ii in rr:
-        tag = []
-        tag.append(ii.select_one('.NJjxre').text)
-        pn = tag[:]
+    # tag = []
+    # temp = []
+
+    # math = 0
+    # for ii in rr:
+        
+
+    #     tag.append(ii.select_one('.NJjxre').text)
+
+    #     if 'https' in ii:
+    #         math += 1
+    #         print(math)
+    #         temp.append(tag)
+    #         print(temp)
+
+    # cu = len(tag)
+    # page.writerow(temp)
+    # hs.writerow(tag)
+    # for i in range(cu):
+        # print(i, tag[i])
+        # hs.writerow(tag[i])
+        # print(len(tag[-1]))
+    
+    # for iii in tag:
+    #     if ' ' in iii:
+    #         temp.append(iii)
+    # print(temp)
+    # 
+
+    
+    
+# ›
+
+
+
+        
+
+        # tag.extend(ii.select_one('.NJjxre').text)
+        # pn = tag[:]
+        # print(len(tag[0]))
+        # a = tag[0][:]
+        # print(len(tag[2]))
+        # for cu in tag[0]:
+            # print(len(cu[0]))
+            # print(len(tag[0]))
+
+
+
+            # temp = []
+            # temp.append(cu[0])
+
+            # hs.writerow(temp)
+            # if tag[0][cu] == ' ':
+            #     continue
+            # print(tag[0][cu])
+
+
+
+
         # tag = ii.select_one('.NJjxre').text
         # for i in len(tag):
-        hs.writerow([pn])
-
+        # hs.writerow(tag)
         # pn = tag[::]
-        # print(pn)
 
 
     # tag.get_text()
