@@ -23,11 +23,20 @@ def search():
         html = fm.driver.page_source
         soup = BeautifulSoup(html,'html.parser')
         page = soup.select('.NJjxre')
+        ppage = soup.select('.tF2Cxc')
 
         temp = []
         arr = []
+        pt = []
+
+        for i in ppage:
+            pt = i.a.attrs['href']
+
+            cm.pd.writerow(pt.split(','))
+        
         for i in page:
             temp = i.select_one('.tjvcx').text
+
             if ' ' in temp:
                 arr = temp.split()
                 print(arr[0])
@@ -37,5 +46,5 @@ def search():
             print()
             
             cm.writer.writerow(arr[0].split(','))
-            
+    cm.ff.close()
     cm.f.close()
