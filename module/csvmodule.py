@@ -6,10 +6,21 @@ if d == "y":
     filename = 'data.csv'
     f = open(filename, 'r', encoding='utf-8-sig', newline='')
     writer = csv.reader(f)
+    # 정제 데이터
     
     fn = 'pdata.csv'
     ff = open(fn, 'r', encoding='utf-8-sig', newline='')
     pd = csv.reader(ff)
+    # 원시 데이터
+
+    # filn = 'godata.csv'
+    # gof = open(filn, 'r', encoding='utf-8-sig', newline='')
+    # gd = csv.reader(gof)
+    # 신고 가능 데이터
+
+    filn = 'godata.csv'
+    gof = open(filn, 'w', encoding='utf-8-sig', newline='')
+    gd = csv.writer(gof)
 
 elif d == "n":
     filename = 'data.csv'
@@ -19,3 +30,7 @@ elif d == "n":
     fn = 'pdata.csv'
     ff = open(fn, 'w', encoding='utf-8-sig', newline='')
     pd = csv.writer(ff)
+
+    # filn = 'godata.csv'
+    # gof = open(filn, 'w', encoding='utf-8-sig', newline='')
+    # gd = csv.writer(gof)

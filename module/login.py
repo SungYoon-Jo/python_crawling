@@ -1,5 +1,6 @@
 from format import *
 from selenium.webdriver.common.by import By
+import format as fm
 
 def add():
     url = 'https://www.nuricops.org/index.do'
@@ -20,7 +21,9 @@ def add():
 
         url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
         driver.get(url)
+        print(fm.driver.current_url)
 
     except:    
         url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
         driver.get(url)
+        print(fm.driver.current_url)

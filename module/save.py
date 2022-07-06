@@ -1,4 +1,3 @@
-from pandas import array
 import format as fm
 import csvmodule as cm
 from bs4 import BeautifulSoup
@@ -36,15 +35,17 @@ def search():
         
         for i in page:
             temp = i.select_one('.tjvcx').text
-
+            
             if ' ' in temp:
                 arr = temp.split()
-                print(arr[0])
+                # print(arr[0])
             else:
                 arr = temp.split()
-                print(arr)
-            print()
+                # print(arr)
+            # print()
             
             cm.writer.writerow(arr[0].split(','))
+    
     cm.ff.close()
     cm.f.close()
+    print("good")

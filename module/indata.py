@@ -1,37 +1,75 @@
 import time
 import pandas as pd
-# from format import *
-import format as fm
+from format import *
+import csvmodule as cm
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
+# https://www.nuricops.org/member/login/loginView.do -> 2번째 로그인 페이지
+# https://www.nuricops.org/declaration/webreg/webregWriteView.do -> 신고 페이지
+
 
 
 def urldata():
-    print(fm.driver.current_url)
+    curl = driver.current_url
+    url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'  
     
+    if url == curl:
+        print("good")
+        # driver.get(url)
+    elif url != curl:
+        url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
+        driver.get(url)
+        driver.implicitly_wait(5)
+
 
     file = "data.csv"
     df = pd.read_csv(file, sep='\t', names=["href: "])
     
-    aet = list()
+    # at = []
+    # tm = []
 
     for i in df.index:
-        fm.driver.find_element(By.XPATH, """//*[@id="radio1"]""").click()
-        print(i)
-        inurl = fm.driver.find_element(By.ID, "acuseUrl")
+        driver.find_element(By.XPATH, """//*[@id="radio1"]""").click()
+
+        inurl = driver.find_element(By.ID, "acuseUrl")
         inurl.clear()
         print(df.loc[i])
+
         inurl.send_keys(df.loc[i])
-        fm.driver.find_element(By.XPATH, """//*[@id="btnUrlCheck"]""").click()
+        driver.find_element(By.XPATH, """//*[@id="btnUrlCheck"]""").click()
         time.sleep(1)
 
-        aet.append(Alert(fm.driver).text)
-        Alert(fm.driver).accept()
+        # aet.append(Alert(driver).text)
+        # tm = Alert(driver).text # 텍스쳐 받아오기
+        # at = driver.switch_to.alert
+        # tm = at.text
+        # at.accept()
+        # Alert(driver).accept() # 누르기
+        
+            
+
         inurl.clear()
         time.sleep(1)
+        # cm.gd.writerow(tm)
 
-        print(aet[i])
-        print()
+        # print(at)
+        # print()
+    cm.gof.close()
 
-# 다른 사이트에 있으면 신고 사이트로 와서 확인 후 url이 맞으면 다음 수행
-# 6번째 7번째 에서 3,2 번 순으로 라디오 버튼을 클릭함 원인을 모르겠음..
+
+
+
+
+
+
+
+
+
+
+
+# 6번째 에서 3,2 번 순으로 라디오 버튼을 클릭함 원인을 모르겠음.. -> url에 트위터가 찍혀 있어서 바뀌였던거.
+
+
+# 추가 기능 1 = 트위터, 페이스북, 유튜브, 인스타 등 거르기 -> db를 만들어서 db안에 있는지 확인 후 
+# 추가 기능 2 = 사용 가능한 url 또는 이미 사용 중인 url 찾아서 분류 하기 -> 하고 있는중 
+# 최적화 = print문 줄이고 보기 편하게 확인만 할수 있도록 하기
