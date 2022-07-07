@@ -24,7 +24,7 @@ from bs4 import BeautifulSoup
 # num = int(input("10단위로 입력해주세요 : "))
 
 con = 0
-num = 10
+num = 100
 
 
 for pg in range(con,num,10):
