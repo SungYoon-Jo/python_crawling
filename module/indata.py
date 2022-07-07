@@ -18,11 +18,13 @@ def urldata():
         driver.get(url)
         driver.implicitly_wait(5)
 
-    file = "data.csv"
+    file = "1.data.csv"
     df = pd.read_csv(file, sep='\t', names=["href: "])
     
     at = []
     gab = []
+
+    print(len(df))
     
     for i in df.index:
         print(i)
@@ -38,7 +40,7 @@ def urldata():
         at.append(Alert(driver).text)
         Alert(driver).accept() # ALERT 확인 누르기
 
-        if 'URL' in at[i]:
+        if '가능한' in at[i]:
             gab.append("GOOD")
         else:
             gab.append("BAD")
@@ -50,7 +52,7 @@ def urldata():
     dataf = pd.DataFrame(cm.writer, columns=['URL'])
     dataf['GAB TEXT'] = at
     dataf['GOOD AND BAD'] = gab
-    dataf.to_csv("3.GAB FILE.csv", index=True, encoding="utf-8-sig")
+    dataf.to_csv("3.GAB DATA FILE.csv", index=True, encoding="utf-8-sig")
 
 
 
