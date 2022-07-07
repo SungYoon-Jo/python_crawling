@@ -48,13 +48,9 @@ def urldata():
         time.sleep(1)
 
     dataf = pd.DataFrame(cm.writer, columns=['URL'])
-    dataf['GOB TEXT'] = at
+    dataf['GAB TEXT'] = at
     dataf['GOOD AND BAD'] = gab
-    dataf.to_csv("tp.csv", index=True, encoding="utf-8-sig")
-
-    cm.gof.close()
-
-
+    dataf.to_csv("3.GAB FILE.csv", index=True, encoding="utf-8-sig")
 
 
 
