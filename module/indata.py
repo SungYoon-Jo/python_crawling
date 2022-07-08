@@ -19,17 +19,20 @@ def urldata():
         driver.implicitly_wait(5)
 
     file = "1.data.csv"
-    df = pd.read_csv(file, sep='\t', names=["href: "])
+    
+    df = pd.read_csv(file, sep='\t', names=["href"])
     
     db = ["youtube","twitter","facebook","tistory","tumblr"]
 
     at = []
     gab = []
     mb = []
+    href = df['href']
+
     print(len(df))
-    uf = cm.writer
+    
     for i in df.index:
-        print(i)
+        print("num : ", i+1)
         driver.find_element(By.XPATH, """//*[@id="radio1"]""").click()
 
         inurl = driver.find_element(By.ID, "acuseUrl")
@@ -42,31 +45,28 @@ def urldata():
         at.append(Alert(driver).text)
         Alert(driver).accept() # ALERT 확인 누르기
 
-        # if '가능한' in at[i]:
-        #     gab.append("GOOD")
-        # else:
-        #     gab.append("BAD")
+        if '가능한' in at[i]:
+            gab.append("GOOD")
+        else:
+            gab.append("BAD")
 
-        for x in range(len(uf)):
-            for y in range(len(db)):
-                if db[y] in uf[x]:
-                    mb.append("member")
+        for y in range(len(db)):
+            if db[y] in href[i]:
+                mb.append("member")
+            # else:
+            #     mb.append("not member")
+        print(mb)    
+
+        # 문제가 있음 검증까지는 가능하나 특정 위치에 맞춰서 구별 문자열을 넣어야함 
 
         inurl.clear()
         time.sleep(1)
 
-    dataf = pd.DataFrame(uf, columns=['URL'])
+    dataf = pd.DataFrame(cm.writer, columns=['URL'])
     dataf['GAB TEXT'] = at
     dataf['GOOD AND BAD'] = gab
     dataf['member'] = mb
     dataf.to_csv("3.GAB DATA FILE.csv", index=True, encoding="utf-8-sig")
-
-
-
-
-
-
-
 
 
 
