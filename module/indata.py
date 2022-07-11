@@ -31,8 +31,9 @@ def urldata():
 
     print(len(df))
     
+    cu = 0
     for i in df.index:
-        print("num : ", i+1)
+        print("num : ", i)
         driver.find_element(By.XPATH, """//*[@id="radio1"]""").click()
 
         inurl = driver.find_element(By.ID, "acuseUrl")
@@ -53,11 +54,16 @@ def urldata():
         for y in range(len(db)):
             if db[y] in href[i]:
                 mb.append("member")
-            # else:
-            #     mb.append("not member")
-        print(mb)    
+                cu += 1
 
-        # 문제가 있음 검증까지는 가능하나 특정 위치에 맞춰서 구별 문자열을 넣어야함 
+            elif cu == 0 and y == 0:
+                mb.append("not member")
+        
+        print(cu)
+        print(len(mb))
+        print(mb)
+
+        # 문제가 있음 검증까지는 가능하나 특정 위치에 맞춰서 구별 문자열을 넣어야함 -> member가 나오면 +1을 더함.. -> 검증이 안됨..
 
         inurl.clear()
         time.sleep(1)
