@@ -2,7 +2,6 @@ import format as fm
 import csvmodule as cm
 from bs4 import BeautifulSoup
 
-
 def search():
     
     con = int(input("0부터 입력해주세요 : "))
@@ -10,8 +9,8 @@ def search():
 
     for pg in range(con,num,10):
         if (pg == 0):
-            pluseurl = input('검색어를 터미널에서 입력하세요 : ')
-            url = 'https://www.google.com/search?q=%s' %(pluseurl)
+            # pluseurl = input('검색어를 터미널에서 입력하세요 : ')
+            url = 'https://www.google.com/search?q=%s' %(cm.filename)
             # inurl, intitle, intext 등 구글 검색을 사용 가능하지만 로봇 확인에 걸림
 
         ch = "&start=%d" % (pg)
@@ -30,7 +29,6 @@ def search():
 
         for i in ppage:
             pt = i.a.attrs['href']
-
             cm.pd.writerow(pt.split(','))
         
         for i in page:

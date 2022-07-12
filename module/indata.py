@@ -7,33 +7,35 @@ from selenium.webdriver.common.alert import Alert
 
 # 로그인확인도 해야함
 
+
 def urldata():
     curl = driver.current_url
-    url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'  
-    
+    url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
+
     if url == curl:
-        print("good")
+        print("access good")
     elif url != curl:
         url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
         driver.get(url)
         driver.implicitly_wait(5)
 
-    file = "1.data.csv"
+    # file = input("실행하게 될 CSV 파일을 입력해주세요 : ")
     
-    df = pd.read_csv(file, sep='\t', names=["href"])
-    
-    db = ["youtube","twitter","facebook","tistory","tumblr"]
+    df = pd.read_csv('./csvdb/' + cm.filename, sep='\t', names=["href"])
+
+    db = ["youtube", "twitter", "facebook", "tistory", "tumblr"]
 
     at = []
     gab = []
     mb = []
     href = df['href']
 
+    print(cm.filename)
     print(len(df))
-    
+
     cu = 0
     for i in df.index:
-        print("num : ", i)
+        print("check number : ", i)
         driver.find_element(By.XPATH, """//*[@id="radio1"]""").click()
 
         inurl = driver.find_element(By.ID, "acuseUrl")
@@ -44,7 +46,7 @@ def urldata():
         time.sleep(1)
 
         at.append(Alert(driver).text)
-        Alert(driver).accept() # ALERT 확인 누르기
+        Alert(driver).accept()  # ALERT 확인 누르기
 
         if '가능한' in at[i]:
             gab.append("GOOD")
@@ -58,13 +60,12 @@ def urldata():
 
         if cu == 0:
             mb.append("not member")
-
         elif cu == 1:
             cu -= 1
-        
-        print(cu)
-        print(len(mb))
-        print(mb)
+
+        # print(cu)
+        # print(len(mb))
+        # print(mb)
 
         # 문제가 있음 검증까지는 가능하나 특정 위치에 맞춰서 구별 문자열을 넣어야함 -> member가 나오면 +1을 더함.. -> 검증이 안됨..
 
@@ -75,8 +76,9 @@ def urldata():
     dataf['GAB TEXT'] = at
     dataf['GOOD AND BAD'] = gab
     dataf['member'] = mb
-    dataf.to_csv("3.GAB DATA FILE.csv", index=True, encoding="utf-8-sig")
+    dataf.to_csv('./csvdb/end check/' + cm.filename + '.csv', index=True, encoding="utf-8-sig")
 
+    print("end good day")
 
 
 # 6번째 에서 3,2 번 순으로 라디오 버튼을 클릭함 원인을 모르겠음.. -> url에 트위터가 찍혀 있어서 바뀌였던거
