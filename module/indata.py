@@ -56,8 +56,11 @@ def urldata():
                 mb.append("member")
                 cu += 1
 
-            elif cu == 0 and y == 0:
-                mb.append("not member")
+        if cu == 0:
+            mb.append("not member")
+
+        elif cu == 1:
+            cu -= 1
         
         print(cu)
         print(len(mb))
