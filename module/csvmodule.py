@@ -15,7 +15,8 @@ if d == "y":
     # 원시 데이터
 
 elif d == "n":
-    filename = input('검색어는 무엇입니까? : ')
+    # filename = input('검색어는 무엇입니까? : ')
+    filename = input('파일 이름은? : ')
 
     f = open('./csvdb/' + filename + '.csv', 'w', encoding='utf-8-sig', newline='')
     writer = csv.writer(f)

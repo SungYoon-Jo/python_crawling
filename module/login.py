@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 import format as fm
 
 def add():
+    curl = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
+
     url = 'https://www.nuricops.org/index.do'
     driver.get(url)
     driver.implicitly_wait(5)
@@ -19,11 +21,9 @@ def add():
         driver.find_element(By.XPATH, """//*[@id="btnMemberloginCheck"]""").click()
         driver.implicitly_wait(5)
 
-        url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
-        driver.get(url)
+        driver.get(curl)
         print(fm.driver.current_url)
 
     except:    
-        url = 'https://www.nuricops.org/declaration/webreg/webregWriteView.do'
-        driver.get(url)
+        driver.get(curl)
         print(fm.driver.current_url)

@@ -19,9 +19,9 @@ def urldata():
         driver.get(url)
         driver.implicitly_wait(5)
 
-    # file = input("실행하게 될 CSV 파일을 입력해주세요 : ")
+    file = input("실행하게 될 CSV 파일을 입력해주세요 : ")
     
-    df = pd.read_csv('./csvdb/' + cm.filename, sep='\t', names=["href"])
+    df = pd.read_csv('./csvdb/' + file + '.csv', sep='\t', names=["href"])
 
     db = ["youtube", "twitter", "facebook", "tistory", "tumblr"]
 
@@ -30,7 +30,7 @@ def urldata():
     mb = []
     href = df['href']
 
-    print(cm.filename)
+    print(file)
     print(len(df))
 
     cu = 0
@@ -76,7 +76,7 @@ def urldata():
     dataf['GAB TEXT'] = at
     dataf['GOOD AND BAD'] = gab
     dataf['member'] = mb
-    dataf.to_csv('./csvdb/end check/' + cm.filename + '.csv', index=True, encoding="utf-8-sig")
+    dataf.to_csv('./csvdb/end check/' + file + '.csv', index=True, encoding="utf-8-sig")
 
     print("end good day")
 
