@@ -55,7 +55,7 @@ def urldata():
 
                 driver.find_element(By.XPATH, """//*[@id="WebForm1"]/table/tbody/tr[2]/td[1]/table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td/table/tbody/tr/td[2]/img""").click()
                 
-                time.sleep(0.3)
+                time.sleep(0.051)
 
                 last_tab = hand[i]
                 # time.sleep(0.5)
