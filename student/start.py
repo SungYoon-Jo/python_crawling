@@ -18,8 +18,10 @@ def urldata():
         url = 'http://sugang.tu.ac.kr/login/login.aspx'
         driver.get(url)
         driver.implicitly_wait(5)
-    
+
     print(leng)
+
+    t = 0
 
     while True: 
         print("start~")
@@ -27,12 +29,17 @@ def urldata():
             print("You pressed q")
             break
 
+        if t == 1:
+            break
+        
         for i in range(0,leng):
 
             if url != curl:
-                url = 'http://sugang.tu.ac.kr/login/login.aspx'
-                driver.get(url)
-                driver.implicitly_wait(5)
+                # url = 'http://sugang.tu.ac.kr/login/login.aspx'
+                # driver.get(url)
+                # driver.implicitly_wait(5)
+                t = 1
+                break
 
             print(i)
 
@@ -64,5 +71,8 @@ def urldata():
                 url = 'http://sugang.tu.ac.kr/login/login.aspx'
                 driver.get(url)
                 driver.implicitly_wait(5)
+
+        if t == 1:
+            break
 
     print("end good day")
