@@ -1,0 +1,39 @@
+﻿,URL,GAB TEXT,GOOD AND BAD,member
+0,https://namu.wiki,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+1,https://blog.theori.io,사용 가능한 URL 입니다.,GOOD,not member
+2,https://www.youtube.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,member
+3,https://www.inven.co.kr,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+4,https://www.joyk.com,사용 가능한 URL 입니다.,GOOD,not member
+5,http://search.danawa.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+6,https://www.tiktok.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+7,https://dilbert.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+8,https://www.koreascience.or.kr,사용 가능한 URL 입니다.,GOOD,not member
+9,https://kr.battle.net,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+10,https://www.coupang.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+11,https://eu.battle.net,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+12,https://twitter.com,"트위터, 인스타, 페북은 신고대상이 SNS계정 사이트·게시물로 신고됩니다.",BAD,member
+13,https://bzooryu.tistory.com,사용 가능한 URL 입니다.,GOOD,member
+14,https://bbs.pubg.game.daum.net,사용 가능한 URL 입니다.,GOOD,not member
+15,https://www.dilbert.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+16,https://pgh268400.tistory.com,사용 가능한 URL 입니다.,GOOD,member
+17,https://m.bunjang.co.kr,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+18,https://www.jobbank.gc.ca,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+19,https://m.facebook.com,"트위터, 인스타, 페북은 신고대상이 SNS계정 사이트·게시물로 신고됩니다.",BAD,member
+20,https://us.battle.net,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+21,http://blog.gongquiz.com,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
+22,https://books.google.co.kr,"이미 사용 중인 URL 입니다.
+다른 URL을 사용해 주십시오.",BAD,not member
