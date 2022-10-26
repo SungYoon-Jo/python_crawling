@@ -48,20 +48,20 @@ def urldata():
         at.append(Alert(driver).text)
         Alert(driver).accept()  # ALERT 확인 누르기
 
-        if '가능한' in at[i]:
-            gab.append("GOOD")
-        else:
-            gab.append("BAD")
+        # if '가능한' in at[i]:
+        #     gab.append("GOOD")
+        # else:
+        #     gab.append("BAD")
 
-        for y in range(len(db)):
-            if db[y] in href[i]:
-                mb.append("member")
-                cu += 1
+        # for y in range(len(db)):
+        #     if db[y] in href[i]:
+        #         mb.append("member")
+        #         cu += 1
 
-        if cu == 0:
-            mb.append("not member")
-        elif cu == 1:
-            cu -= 1
+        # if cu == 0:
+        #     mb.append("not member")
+        # elif cu == 1:
+        #     cu -= 1
 
         # print(cu)
         # print(len(mb))
